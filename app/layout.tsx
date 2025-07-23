@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="es">
-      <body className={`${spaceGrotesk.variable} antialiased`}>
-        <main className="flex-1">{children}</main>
-      </body> 
+        <body className={`${spaceGrotesk.variable} antialiased`}>
+          <main className="flex-1">{children}</main>
+        </body> 
       </html>
     </ClerkProvider>
   );
