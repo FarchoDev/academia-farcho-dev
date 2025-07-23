@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs'
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "./(routes)/(root)/components";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const spaceGrotesk = Space_Grotesk({
+  variable : "--font-space-grotesk",
+  subsets : ["latin"],
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="es">
+        <body className={`${spaceGrotesk.variable} antialiased`}>
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex-1">{children}</main>
+          </SidebarProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
