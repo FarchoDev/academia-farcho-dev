@@ -1,4 +1,12 @@
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -18,12 +26,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <ClerkProvider>
+      <html lang="es">
       <body
         className={`${space_Grotesk.variable} antialiased`}
       >
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <main className="flex-1">
+
+        </main>
         {children}
       </body>
     </html>
+    </ClerkProvider>
   );
 }
