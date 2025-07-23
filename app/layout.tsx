@@ -28,9 +28,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="es">
-      <body
-        className={`${space_Grotesk.variable} antialiased`}
-      >
+      <body className={`${space_Grotesk.variable} antialiased`}>
         <SignedOut>
           <SignInButton />
           <SignUpButton>
@@ -43,8 +41,8 @@ export default function RootLayout({
 
         </main>
         {children}
-      </body>
-    </html>
+      </body> 
+      </html>
     </ClerkProvider>
   );
 }
