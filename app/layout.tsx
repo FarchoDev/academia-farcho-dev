@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const space_Grotesk = Space_Grotesk({
+const spaceGrotesk = Space_Grotesk({
   variable : "--font-space-grotesk",
   subsets : ["latin"],
 })
@@ -28,19 +21,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="es">
-      <body className={`${space_Grotesk.variable} antialiased`}>
-        <SignedOut>
-          <SignInButton />
-          <SignUpButton>
-          </SignUpButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-        <main className="flex-1">
-
-        </main>
-        {children}
+      <body className={`${spaceGrotesk.variable} antialiased`}>
+        <main className="flex-1">{children}</main>
       </body> 
       </html>
     </ClerkProvider>
